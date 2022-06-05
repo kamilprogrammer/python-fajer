@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<title>التسجبل</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/bootstrap/css/bootstrap.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/animate/animate.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/css-hamburgers/hambergers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/css copy/aos.css')}}">
+<!--===============================================================================================-->
+</head>
+<body>
+	{% include 'inc/_navbar.html'  %}
+
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img data-aos="zoom-in" src="{{url_for('static', filename='img-01.png')}}" alt="IMG" >
+			</div>
+			 <style>
+				 .container-contact1-form-btn:hover {
+					color: #fff;
+
+				 }
+			 </style>
+			<form class="contact1-form validate-form" action="/register/2" method="post">
+				<span data-aos="zoom-in" class="contact1-form-title"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
+					قسم التسجيل
+				</span>
+
+				<div data-aos="slide-right" class="wrap-input1 validate-input" data-validate = "Name is required in arabic">
+					<input class="input1" type="text" name="name" placeholder="الاسم الثلاثي">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div data-aos="slide-left" class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<input class="input1" type="tel" name="phonennumber" placeholder="رقم الهاتف للاب">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div data-aos="slide-right" class="wrap-input1 validate-input" data-validate = "Subject is required">
+					<input class="input1" type="tel" name="phonennumber" placeholder="رقم الهاتف للأم">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div data-aos="slide-left" class="wrap-input1 validate-input" data-validate = "Message is required">
+					<input type="date" class="input1" name="address" placeholder="موقع المنزل" maxlength="200">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div data-aos="zoom-in-up" class="container-contact1-form-btn">
+					<button id="/Mian/theme/inde.html" class="contact1-form-btn">
+						<span style="padding-bottom: 8px;"></span>
+						 	<a style="color: #0078ff; padding-right: 8px;" class="material-icons">send</a>ارسال الطلب
+							<i style="padding-bottom: 0px;" class="fa fa-long-arrow-right" aria-hidden="true" href="/Mian/theme/index.html"></i>
+						
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src=""></script>
+<!--===============================================================================================-->
+	<script src="register/vendor/bootstrap/js/popper.js"></script>
+	<script src="register/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="register/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static', filename='register/vendor/tilt/tilt.jquery.min.js')}}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+<!--===============================================================================================-->
+	<script src="{{url_for('static', filename='register/js/main.js')}}"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+	  AOS.init();
+	</script>
+</body>
+</html>
