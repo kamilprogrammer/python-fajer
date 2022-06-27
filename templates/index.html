@@ -1,5 +1,6 @@
 {% block body  %}
 {%  include 'inc/_navbar.html'  %}
+
 <style>/* GLOBAL STYLES
     -------------------------------------------------- */
     /* Padding below the footer and lighter body text */
@@ -195,59 +196,25 @@
 
 
 </style>
-<div class="loader_bg">
-  <div class="loader"></div>
-</div>
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <div style="height: 100px;"></div>
-            <img class="img-header" src="{{url_for('static', filename='img-01.png')}}" align="middle" style="width: 300px; border-radius: 10px;" />
-            <h1>مؤسسة الفجر التعليمية الخاصة</h1>
-            <p>جيل الفجر الباسم جيل المستقبل الوضاء يشرق في وجهه التحدي وفي عينيه أشواق العطاء  👦💪👧</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="container">
-          <div class="carousel-caption">
-            <img class="img-header" src="{{url_for('static', filename='img-01.png')}}" align="middle" style="width: 300px; border-radius: 10px;" />
-            <h1 data-aos="zoom-in" >مؤسسة الفجر التعليمية الخاصة</h1>
-            <p>جيل الفجر الباسم جيل المستقبل الوضاء يشرق في وجهه التحدي وفي عينيه أشواق العطاء  👦💪👧</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
 
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <img class="img-header" src="{{url_for('static', filename='img-01.png')}}" align="middle" style="width: 300px; border-radius: 10px;" />
-            <h1>مؤسسة الفجر التعليمية الخاصة</h1>
-            <p>جيل الفجر الباسم جيل المستقبل الوضاء يشرق في وجهه التحدي وفي عينيه أشواق العطاء  👦💪👧</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+<!-- Background image -->
+<div class="p-5 text-center bg-image" style="background-image: url('/static/main.png'); height: 500px;">
+<div class="mask" style="isolation: isolate; background-color: rgba(0, 200, 255, 0.272); height: 500px;">
+<div class="d-flex justify-content-center align-items-center h-100">
+  <div class="text-white">
+    <img src="{{url_for('static', filename='img-01.png')}}" alt="LOGO" style="width: 160px; border-radius: 10px;">
+    <h1 class="mb-3">مؤسسة الفجر التعليمية الخاصة</h1>
+    <h5 class="mb-3">جيل الفجر الباسم جيل المستقبل الوضاء يشرق في وجهه التحدي وفي عينيه أشواق العطاء  👦💪👧</h5>
+    <a class="btn btn-outline-light btn-lg" href="#places" role="button"
+    >  🌟أكثر  </a
+    >
   </div>
-
+</div>
+</div>
+</div>
+<!-- Background image -->
+</header>
+<section class="places" id="places"></section>
   {% include 'inc/places.html'  %}
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>

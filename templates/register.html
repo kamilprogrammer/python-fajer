@@ -26,6 +26,17 @@
 </head>
 <body>
 	{% include 'inc/_navbar.html'  %}
+	<div  data-aos='zoom-out' class="position-relative m-4" style="margin: 10px;">
+        <div class="progress" style="height: 1px;">
+          <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <a href="/main">
+        <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button></a>
+        <a href="/register">
+        <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">2</button></a>
+        <a href="/sc">
+        <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">3</button></a>
+      </div>
 
 	<div class="contact1">
 		<div class="container-contact1">
@@ -38,37 +49,38 @@
 
 				 }
 			 </style>
-			<form class="contact1-form validate-form" action="/register/2" method="post">
+			<form class="contact1-form validate-form" action="/register/s" method="post">
 				<span data-aos="zoom-in" class="contact1-form-title"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
 					قسم التسجيل
 				</span>
 
-				<div data-aos="slide-right" class="wrap-input1 validate-input" data-validate = "Name is required in arabic">
-					<input class="input1" type="text" name="name" placeholder="الاسم الثلاثي">
+				<div data-aos="slide-right" class="wrap-input1 validate-input">
+					<input class="input1" type="text" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" name="name" placeholder="الاسم الثلاثي" required	 >
 					<span class="shadow-input1"></span>
 				</div>
 
-				<div data-aos="slide-left" class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<input class="input1" type="tel" name="phonennumber" placeholder="رقم الهاتف للاب">
+				
+				<div data-aos="slide-left" class="wrap-input1 validate-input">
+					<input type="number" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="input1" name="number" placeholder="الصف" max="9" required min="1">
 					<span class="shadow-input1"></span>
 				</div>
 
-				<div data-aos="slide-right" class="wrap-input1 validate-input" data-validate = "Subject is required">
-					<input class="input1" type="tel" name="phonennumber" placeholder="رقم الهاتف للأم">
+
+				<div data-aos="slide-right" class="wrap-input1 validate-input">
+					<input class="input1" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="email" name="email" placeholder="الايميل" required>
 					<span class="shadow-input1"></span>
 				</div>
 
-				<div data-aos="slide-left" class="wrap-input1 validate-input" data-validate = "Message is required">
-					<input type="date" class="input1" name="address" placeholder="موقع المنزل" maxlength="200">
+				<div data-aos="slide-left" class="wrap-input1 validate-input">
+					<input type="phonenumber" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="input1" name="phonenumber" placeholder="رقم للتواصل" maxlength="10" required minlength="10">
 					<span class="shadow-input1"></span>
 				</div>
+
 
 				<div data-aos="zoom-in-up" class="container-contact1-form-btn">
-					<button id="/Mian/theme/inde.html" class="contact1-form-btn">
+					<button id="/Mian/theme/inde.html" type="submit" class="contact1-form-btn">
 						<span style="padding-bottom: 8px;"></span>
-						 	<a style="color: #0078ff; padding-right: 8px;" class="material-icons">send</a>ارسال الطلب
-							<i style="padding-bottom: 0px;" class="fa fa-long-arrow-right" aria-hidden="true" href="/Mian/theme/index.html"></i>
-						
+						ارسال
 					</button>
 				</div>
 			</form>
