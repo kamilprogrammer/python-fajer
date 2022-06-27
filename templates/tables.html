@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تم التسجيل بنجاح</title>
+</head>
+<body style="text-align: center;" dir="rtl">
+    {% include 'inc/_navbar.html'  %}
+    {% if name and number and email and phone  %}
+    <br>
+    <div style="text-align: center;">
+        <style>
+          @media only screen and (max-width: 600px) {
+            * {
+              font-size: medium;
+            }
+          }
+            * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change your font family */
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+        </style>
+    <table style="font-size: x-large; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الاسم</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الصف</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الايميل</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">رقم التواصل</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+          <td style="width: 20px;">{{name}}</td>
+          <td style="width: 5px;">{{number}}</td>
+          <td style="width: 50px; margin: 10px;">{{email}}</td>
+          <td>{{phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <a style="color: black; font-size: x-large; text-decoration: none;" href="/true"> <i style="font-size: xx-large; color: lightgreen;" class="bi bi-patch-check"></i>صحيح</a>
+    <br>
+    <a style="color: black; font-size: x-large; text-decoration: none;" href="/register/s"> <i style="font-size: xx-large; color: lightgreen;;" class="bi bi-pen"></i>تعديل</a>
+      {% endif %}
+    
+</body>
+</html>
