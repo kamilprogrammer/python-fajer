@@ -1,5 +1,5 @@
-def Posts ():
-    posts = [
+def Tops ():
+    topses = [
  
         {
             'id':1,
@@ -25,4 +25,4 @@ def Posts ():
         },
 
     ]
-    return posts
+    return topses

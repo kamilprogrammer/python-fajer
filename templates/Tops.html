@@ -4,9 +4,243 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>صفحة الاوائل</title>
 </head>
-<body>
-    
+<body dir="rtl">
+    {% include 'inc/_navbar.html'  %}
+    <br>
+    <div style="text-align: center;">
+        <label style="font-size: 40px;" for="">الصف السابع</label>
+        <br>
+        <style>
+            * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change your font family */
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: right;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+        </style>
+        <br>
+    <table style="font-size: x-large; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">المرتبة</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الاسم</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الصف</th>
+            </tr>
+        </thead>
+        {% for top in Tops  %}
+        <tbody class="content-table">
+        <tr class="active-row">
+          <td style="width: 20px;">1</td>
+          <td style="width: 5px;">{{top.body}}</td>
+          <td style="width: 50px; margin: 10px;">السابع</td>
+        </tr>
+        <tr class="active-row">
+            <td style="width: 20px;">2</td>
+            <td style="width: 5px;">as</td>
+            <td style="width: 50px; margin: 10px;">السابع</td>
+          </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">3</td>
+            <td style="width: 5px;">mllmlm</td>
+            <td style="width: 50px; margin: 10px;">السابع</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+    <br>
+    <div style="text-align: center;">
+        <label style="font-size: 40px;" for="">الصف الثامن</label>
+        <br>
+        <style>
+            * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change your font family */
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: right;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+        </style>
+        <br>
+    <table style="font-size: x-large; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">المرتبة</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الاسم</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الصف</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+          <td style="width: 20px;">1</td>
+          <td style="width: 5px;">asas}</td>
+          <td style="width: 50px; margin: 10px;">السابع</td>
+        </tr>
+        <tr class="active-row">
+            <td style="width: 20px;">2</td>
+            <td style="width: 5px;">عمرو العبدالله</td>
+            <td style="width: 50px; margin: 10px;">السابع</td>
+          </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">3</td>
+            <td style="width: 5px;">كامل الرفاعي</td>
+            <td style="width: 50px; margin: 10px;">السابع</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <label style="font-size: 40px;" for="">الصف التاسع</label>
+        <br>
+        <style>
+            * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change your font family */
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: right;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+        </style>
+        <br>
+    <table style="font-size: x-large; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">المرتبة</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الاسم</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الصف</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+          <td style="width: 20px;">1</td>
+          <td style="width: 5px;">سهل حواره</td>
+          <td style="width: 50px; margin: 10px;">السابع</td>
+        </tr>
+        <tr class="active-row">
+            <td style="width: 20px;">2</td>
+            <td style="width: 5px;">عمرو العبدالله</td>
+            <td style="width: 50px; margin: 10px;">السابع</td>
+          </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">3</td>
+            <td style="width: 5px;">كامل الرفاعي</td>
+            <td style="width: 50px; margin: 10px;">السابع</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
 </body>
 </html>
