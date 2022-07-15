@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<title>التسجبل</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/bootstrap/css/bootstrap.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/animate/animate.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/css-hamburgers/hambergers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register/css copy/aos.css')}}">
+<!--===============================================================================================-->
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    {% include 'inc/_navbar.html'  %}
+
+
+
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img data-aos="zoom-in" src="{{url_for('static', filename='img-01.png')}}" alt="IMG" >
+			</div>
+			 <style>
+				 .container-contact1-form-btn:hover {
+					color: #fff;
+
+				 }
+			 </style>
+			<form class="contact1-form validate-form" action="/register/s" method="post">
+				<span data-aos="zoom-in" class="contact1-form-title"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
+                    أوائل الصف السابع
+				</span>
+				<style>
+					.labels {
+						margin: 10px;
+						font-size: large;
+						font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+					}
+				</style>
+
+				<div data-aos="slide-right" class="wrap-input1 validate-input">
+				{{ form.hidden_tag() }}
+				{{ form.name71(class="wrap-input1 validate-input input1", placeholder="الدرجة الاولى" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+					<span class="shadow-input1"></span>
+				</div>
+
+				
+				<div data-aos="slide-left" class="wrap-input1 validate-input">
+					{{ form.name72(class="wrap-input1 validate-input input1",placeholder="الدرجة الثانية" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+					<span class="shadow-input1"></span>
+				</div>
+
+
+				<div data-aos="slide-right" class="wrap-input1 validate-input">
+					{{ form.name73(class="wrap-input1 validate-input input1", placeholder="الدرجة الثالثة" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+					<span class="shadow-input1"></span>
+				</div>
+				</div>
+		</div>
+	</div>
+
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img data-aos="zoom-in" src="{{url_for('static', filename='img-01.png')}}" alt="IMG" >
+			</div>
+			 <style>
+				 .container-contact1-form-btn:hover {
+					color: #fff;
+
+				 }
+			 </style>
+				<span data-aos="zoom-in" class="contact1-form-title"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
+					أوائل الصف الثامن
+				</span>
+				
+				<div data-aos="slide-right" class="wrap-input1 validate-input">
+					{{ form.hidden_tag() }}
+					{{ form.name81(class="wrap-input1 validate-input input1", placeholder="الدرجة الاولى" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+						<span class="shadow-input1"></span>
+					</div>
+	
+					
+					<div data-aos="slide-left" class="wrap-input1 validate-input">
+						{{ form.name82(class="wrap-input1 validate-input input1",placeholder="الدرجة الثانية" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+						<span class="shadow-input1"></span>
+					</div>
+	
+	
+					<div data-aos="slide-right" class="wrap-input1 validate-input">
+						{{ form.name83(class="wrap-input1 validate-input input1", placeholder="الدرجة الثالثة" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+						<span class="shadow-input1"></span>
+					</div>
+				</div>
+		</div>
+	</div>
+
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img data-aos="zoom-in" src="{{url_for('static', filename='img-01.png')}}" alt="IMG" >
+			</div>
+			 <style>
+				 .container-contact1-form-btn:hover {
+					color: #fff;
+
+				 }
+			 </style>
+				<span data-aos="zoom-in" class="contact1-form-title"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
+					أوائل الصف التاسع
+				</span>
+
+				<div data-aos="slide-right" class="wrap-input1 validate-input">
+					{{ form.hidden_tag() }}
+					{{ form.name91(class="wrap-input1 validate-input input1", placeholder="الدرجة الاولى" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+						<span class="shadow-input1"></span>
+					</div>
+	
+					
+					<div data-aos="slide-left" class="wrap-input1 validate-input">
+						{{ form.name92(class="wrap-input1 validate-input input1",placeholder="الدرجة الثانية" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+						<span class="shadow-input1"></span>
+					</div>
+	
+	
+					<div data-aos="slide-right" class="wrap-input1 validate-input">
+						{{ form.name93(class="wrap-input1 validate-input input1", placeholder="الدرجة الثالثة" , style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;") }}
+						<span class="shadow-input1"></span>
+					</div>
+
+
+				<div data-aos="zoom-in-up" class="container-contact1-form-btn">
+					{{form.Submit(class="contact1-form-btn")}}
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+<!--===============================================================================================-->
+	<script src=""></script>
+<!--===============================================================================================-->
+	<script src="register/vendor/bootstrap/js/popper.js"></script>
+	<script src="register/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="register/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static', filename='register/vendor/tilt/tilt.jquery.min.js')}}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+<!--===============================================================================================-->
+	<script src="{{url_for('static', filename='register/js/main.js')}}"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+	  AOS.init();
+	</script>
+</body>
+</html>

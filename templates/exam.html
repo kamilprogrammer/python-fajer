@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبارات</title>
+</head>
+<body style="text-align: center;" dir="rtl">
+    {% include 'inc/_navbar.html'  %}
+    <br>
+    <div style="text-align: cneter;">
+        <form action="/exam">
+        <h1>تحديد موعد الاختبار</h1>
+        <br>
+        <input type="date">
+    </div>
+    <br>
+    <div style="text-align: cneter;">
+        <h1>ارسال رسالة للطلاب</h1>
+        <br>
+        <br>
+        <label for="">:الرسالة</label>
+        <br>
+        <br>
+        <input type="text">
+        <br>
+        <br>
+        <label for="">المرسل اليه</label>
+        <br>
+        <br>
+        <label for="">الصف الاول</label>
+        <input type="checkbox" name="g1">
+        <label for="">الصف الثاني</label>
+        <input type="checkbox" name="g2">
+        <label for="">الصف الثالث</label>
+        <input type="checkbox" name="g3">
+        <br>
+        <br>
+        <label for="">الصف الرابع</label>
+        <input type="checkbox" name="g4">
+        <label for="">الصف الخامس</label>
+        <input type="checkbox" name="g5">
+        <label for="">الصف السادس</label>
+        <input type="checkbox" name="g6">
+        <br>
+        <br>
+        <label for="">الصف السابع</label>
+        <input type="checkbox" name="g7">
+        <label for="">الصف الثامن</label>
+        <input type="checkbox" name="g8">
+        <label for="">الصف التاسع</label>
+        <input type="checkbox" name="g9">
+    </div>
+    <br>
+    <input type="submit" value="ارسال">
+</form>
+
+    
+</body>
+</html>
