@@ -49,11 +49,15 @@
         </style>
         <h2 data-aos="zoom-out" >! ادخل الباسوورد</h2>
         <form action="/sc" method="post">
-            <input data-aos="zoom-out" type="password" name="pass" class="input1">
+            <input data-aos="zoom-out" type="password" name="pass" class="input1" id="myInput"><br>
+            <div style="height: 15px;"></div>
+            <div data-aos="zoom-out">
+                <input type="checkbox" onclick="myFunction()"><label style="margin-left: 10px;" for="">اظهار الباسوورد</label>
+            </div>
             <div style="height: 15px;"></div>
             <br>
             <div style="text-align: center;">
-                <button data-aos="zoom-out" style="width: 200px; height: 50px; color:white; background-color:#50aeca; border-radius: 200px;" type="submit">Login</button>
+                <button onclick="alert('kamil')" data-aos="zoom-out" style="width: 200px; height: 50px; color:white; background-color:#50aeca; border-radius: 200px;" type="submit">Login</button>
             </div>
         </form> 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -61,4 +65,5 @@
       AOS.init();
     </script>
 </body>
+<script src="{{url_for('static', filename='privatesc/js.js')}}"></script>
 </html>

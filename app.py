@@ -1,10 +1,13 @@
 from email.policy import default
+from pydoc import render_doc
+from tkinter import *
+from tkinter import ON
+from turtle import onclick
 from types import NoneType
 from flask import Flask, render_template, redirect
 from flask import request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import INTEGER, Integer
-from data import Tops
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_wtf import FlaskForm
@@ -77,11 +80,18 @@ def registers ():
         number = request.form.get("number")
         email = request.form.get("email")
         phone = request.form.get("phonenumber")
-        msg = 'kamil is here because my package is just here!'
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login("kg0390217@gmail.com", "shisfemgekjynvwk")
-        server.sendmail ("kg0390217@gmail.com", email, msg)
+        server2 = smtplib.SMTP("smtp.gmail.com", 587)
+        mmsg = 'new email signed in from the website the name is '+name+'  '+number+' '+email+'  '+phone
+        server2.starttls()
+        server2.login("kg0390217@gmail.com", "shisfemgekjynvwk")
+        server2.sendmail ("kg0390217@gmail.com", "kg0390217@gmail.com",mmsg)
+
+
+        msg1 = 'kamil is here because my package is just here!'
+        server1 = smtplib.SMTP("smtp.gmail.com", 587)
+        server1.starttls()
+        server1.login("kg0390217@gmail.com", "shisfemgekjynvwk")
+        server1.sendmail ("kg0390217@gmail.com", email, msg1)
 
         if name  == '':
             return render_template('register.html')
@@ -96,7 +106,9 @@ def registers ():
     return render_template('register.html')
 @app.route('/Tops')
 def Tops():
-    return render_template('Tops.html', tops = Tops)
+    return render_template('Tops.html')
+
+
 @app.route('/sc' , methods =["GET", "POST"])
 def sc ():
     if request.method == "POST":
@@ -108,7 +120,7 @@ def sc ():
             name71 = form.name71.data
             form.name71.data = ''
 
-        return render_template('topsmanager.html', form=form, name71=name71)
+        return render_template('choose2.html', form=form, name71=name71)
 
     return render_template("privatesc.html")
 
@@ -144,6 +156,27 @@ def erorr404 (e):
 def erorr500 (e):
     return render_template('404.html'), 404
 
+@app.route('/bus')
+def bus():
+    return render_template('bus.html')
+
+
+@app.route('/exam')
+def exam():
+    if request.method == 'POST':
+        msg1 = 'kamil is here because my package is just here!'
+        server1 = smtplib.SMTP("smtp.gmail.com", 587)
+        server1.starttls()
+        server1.login("kg0390217@gmail.com", "shisfemgekjynvwk")
+        to = ['rjdata.sy@gmail.com' , 'al-fajer@gmail.com']
+        server1.sendmail ("kg0390217@gmail.com", to, msg1)
+        
+    return render_template('exam.html')
+
+
+@app.route('/noto')
+def noto():
+    return render_template('noto.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,4 +1,5 @@
 {% block body  %}
+<title>الصفحة الرئيسية</title>
 {%  include 'inc/_navbar.html'  %}
 
 <style>/* GLOBAL STYLES
@@ -193,7 +194,12 @@
 }
 
 
-
+img:hover  {
+  transform: rotate(10deg);
+}
+img {
+  transition: transform .1s ease-in-out;
+}
 
 </style>
 
@@ -202,7 +208,7 @@
 <div class="mask" style="isolation: isolate; background-color: rgba(0, 200, 255, 0.272); height: 500px;">
 <div class="d-flex justify-content-center align-items-center h-100">
   <div class="text-white">
-    <img src="{{url_for('static', filename='img-01.png')}}" alt="LOGO" style="width: 160px; border-radius: 10px;">
+    <img class="img" src="{{url_for('static', filename='img-01.png')}}" alt="LOGO" style="width: 160px; border-radius: 10px;">
     <h1 class="mb-3">مؤسسة الفجر التعليمية الخاصة</h1>
     <h5 class="mb-3">جيل الفجر الباسم جيل المستقبل الوضاء يشرق في وجهه التحدي وفي عينيه أشواق العطاء  👦💪👧</h5>
     <a class="btn btn-outline-light btn-lg" href="#places" role="button"
