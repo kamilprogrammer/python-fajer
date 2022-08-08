@@ -1,9 +1,7 @@
 from email.policy import default
-from pydoc import render_doc
+from enum import unique
 from tkinter import *
 from tkinter import ON
-from turtle import onclick
-from types import NoneType
 from flask import Flask, render_template, redirect
 from flask import request
 from flask_sqlalchemy import SQLAlchemy
@@ -16,10 +14,16 @@ from wtforms.validators import DataRequired
 from flask_mail import Mail, Message
 import os
 import smtplib
+from mongo import mongo
+from flask_pymongo import PyMongo
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+mongo.init_app(app)
+
+mongo = PyMongo()
+app.config['MONGO_URI'] = 'mongodb+srv://admin:admin@python-fajer.0scwbev.mongodb.net/?retryWrites=true&w=majority'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = "kamil's key"
 
@@ -47,9 +51,27 @@ class Students (db.Model):
     name91 =  db.Column(db.Text(), nullable = False)
     name92 =  db.Column(db.Text(), nullable = False)
     name93 =  db.Column(db.Text(), nullable = False)
-    datetime = db.Column(db.DateTime, default=datetime.utcnow)    
+    datetime = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+class Register(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name =  db.Column(db.Text(), nullable = False)
+    email =  db.Column(db.Text(), nullable = False, unique=True)
+    number =  db.Column(db.Integer)
+    phone = db.Column(db.Integer)
+    date_time =  db.Column(db.Date, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Register: {self.email}>'
+
+
+class Register_std(FlaskForm):
+    name = StringField("الاسم الثلاثي", validators=[DataRequired()])
+    email = StringField("الايميل", validators=[DataRequired()])
+    phone = StringField("رقم للتواصل", validators=[DataRequired()])
+    number = StringField("الصف", validators=[DataRequired()])
+    sub = SubmitField("ارسال")
 
     #create a Text !
     def __repr__ (self):
@@ -103,7 +125,29 @@ def registers ():
             return render_template('register.html')         
         else:
             return render_template('tables.html', number=number, phone=phone, name=name, email=email)
-    return render_template('register.html')
+
+    name = None
+    number = None
+    email =  None
+    phone =  None
+    form = Register_std()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+
+        name = form.number.data
+        form.number.data = ''
+
+        name = form.phone.data
+        form.phone.data = ''
+
+        name = form.email.data
+        form.email.data = ''
+
+        
+
+    form = Register_std()
+    return render_template('wtfregister.html',email=email, name=name, phone=phone, number=number,  form=form)
 @app.route('/Tops')
 def Tops():
     return render_template('Tops.html')
@@ -170,7 +214,6 @@ def exam():
         server1.login("kg0390217@gmail.com", "shisfemgekjynvwk")
         to = ['rjdata.sy@gmail.com' , 'al-fajer@gmail.com']
         server1.sendmail ("kg0390217@gmail.com", to, msg1)
-        
     return render_template('exam.html')
 
 
