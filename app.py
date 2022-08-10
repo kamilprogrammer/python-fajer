@@ -1,7 +1,9 @@
+from concurrent.futures.process import _python_exit
 from email.policy import default
 from enum import unique
 from tkinter import *
 from tkinter import ON
+from unicodedata import name
 from flask import Flask, render_template, redirect
 from flask import request
 from flask_sqlalchemy import SQLAlchemy
@@ -14,18 +16,23 @@ from wtforms.validators import DataRequired
 from flask_mail import Mail, Message
 import os
 import smtplib
-from mongo import mongo
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+from flask_pymongo import PyMongo
+from flask import Flask, render_template, request, url_for, redirect
 
 
-app = Flask(__name__)
+app = Flask(__name__)   
+database_name = 'python-fajer'
+DB_URI = 'mongodb+srv://admin:admin@python-fajer.0scwbev.mongodb.net/{}?retryWrites=true&w=majority'.format(database_name)
+app.config['MONGO_URI'] = DB_URI
+mongo = PyMongo(app)
 mongo.init_app(app)
-
-mongo = PyMongo()
-app.config['MONGO_URI'] = 'mongodb+srv://admin:admin@python-fajer.0scwbev.mongodb.net/?retryWrites=true&w=majority'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = "kamil's key"
+
+
 
 class Topsm(FlaskForm):
     name71 = StringField("الدرجة الاولى", validators=[DataRequired()])
@@ -54,13 +61,13 @@ class Students (db.Model):
     datetime = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-class Register(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name =  db.Column(db.Text(), nullable = False)
-    email =  db.Column(db.Text(), nullable = False, unique=True)
-    number =  db.Column(db.Integer)
-    phone = db.Column(db.Integer)
-    date_time =  db.Column(db.Date, default=datetime.utcnow)
+class Register(mongo.Document):
+    id = mongo.IntField(mongo.Integer, primary_key = True)
+    name =  mongo.Column(mongo.Text(), nullable = False)
+    email =  mongo.Column(mongo.Text(), nullable = False, unique=True)
+    number =  mongo.Column(mongo.Integer)
+    phone = mongo.Column(mongo.Integer)
+    date_time =  mongo.Column(mongo.Date, default=datetime.utcnow)
 
     def __repr__(self):
         return f'<Register: {self.email}>'
@@ -91,17 +98,19 @@ def blog ():
     return render_template('blog.html')
 
 # register
-@app.route('/register', methods = ['POST', 'GET'])
+@app.route('/register/', methods = ['POST', 'GET'])
 def register ():
         return render_template('choose.html')
+        
 
-@app.route('/register/s' , methods=['POST', 'GET'])
+@app.route('/register/s/' , methods=['POST', 'GET'])
 def registers ():
     if request.method == "POST":
         name = request.form.get("name")
         number = request.form.get("number")
         email = request.form.get("email")
         phone = request.form.get("phonenumber")
+
         server2 = smtplib.SMTP("smtp.gmail.com", 587)
         mmsg = 'new email signed in from the website the name is '+name+'  '+number+' '+email+'  '+phone
         server2.starttls()
@@ -147,7 +156,7 @@ def registers ():
         
 
     form = Register_std()
-    return render_template('wtfregister.html',email=email, name=name, phone=phone, number=number,  form=form)
+    return render_template('register.html',email=email, name=name, phone=phone, number=number,  form=form)
 @app.route('/Tops')
 def Tops():
     return render_template('Tops.html')
