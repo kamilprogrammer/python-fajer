@@ -28,6 +28,7 @@ DB_URI = 'mongodb+srv://admin:admin@python-fajer.0scwbev.mongodb.net/{}?retryWri
 app.config['MONGO_URI'] = DB_URI
 mongo = PyMongo(app)
 mongo.init_app(app)
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = "kamil's key"
