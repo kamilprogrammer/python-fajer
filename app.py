@@ -17,20 +17,14 @@ from flask_mail import Mail, Message
 import os
 import smtplib
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
-from flask_pymongo import PyMongo
-from flask import Flask, render_template, request, url_for, redirect
 
 
 app = Flask(__name__)   
 database_name = 'python-fajer'
-DB_URI = 'mongodb+srv://admin:admin@python-fajer.0scwbev.mongodb.net/{}?retryWrites=true&w=majority'.format(database_name)
+DB_URI = 'mongodb+srv://admin:admin@python-fajer.0scwbev.mongodb.net/{}&retryWrites=true&w=majority'.format(database_name)
 app.config['MONGO_URI'] = DB_URI
 mongo = PyMongo(app)
 mongo.init_app(app)
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = "kamil's key"
 
 
@@ -46,29 +40,14 @@ class Topsm(FlaskForm):
     name92 = StringField("الدرجة الثانية", validators=[DataRequired()])
     name93 = StringField("الدرجة الثالثة", validators=[DataRequired()])
     Submit = SubmitField("ارسال")
-#create a model 
-class Students (db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name =  db.Column(db.Text(), nullable = False)
-    name71 =  db.Column(db.Text(), nullable = False)
-    name72 =  db.Column(db.Text(), nullable = False)
-    name73 =  db.Column(db.Text(), nullable = False)
-    name81 =  db.Column(db.Text(), nullable = False)
-    name82 =  db.Column(db.Text(), nullable = False)
-    name83 =  db.Column(db.Text(), nullable = False)
-    name91 =  db.Column(db.Text(), nullable = False)
-    name92 =  db.Column(db.Text(), nullable = False)
-    name93 =  db.Column(db.Text(), nullable = False)
-    datetime = db.Column(db.DateTime, default=datetime.utcnow)
 
-
-class Register(mongo.Document):
-    id = mongo.IntField(mongo.Integer, primary_key = True)
-    name =  mongo.Column(mongo.Text(), nullable = False)
-    email =  mongo.Column(mongo.Text(), nullable = False, unique=True)
-    number =  mongo.Column(mongo.Integer)
-    phone = mongo.Column(mongo.Integer)
-    date_time =  mongo.Column(mongo.Date, default=datetime.utcnow)
+#class Register(mongo.__doc__):
+#    id = mongo.IntField(mongo.Integer, primary_key = True)
+#    name =  mongo.Column(mongo.Text(), nullable = False)
+#    email =  mongo.Column(mongo.Text(), nullable = False, unique=True)
+#    number =  mongo.Column(mongo.Integer)
+#    phone = mongo.Column(mongo.Integer)
+#    date_time =  mongo.Column(mongo.Date, default=datetime.utcnow)
 
     def __repr__(self):
         return f'<Register: {self.email}>'
@@ -111,6 +90,9 @@ def registers ():
         number = request.form.get("number")
         email = request.form.get("email")
         phone = request.form.get("phonenumber")
+
+        students = mongo.db.stds
+        students.insert_one({'name': name , 'compelete': False})
 
         server2 = smtplib.SMTP("smtp.gmail.com", 587)
         mmsg = 'new email signed in from the website the name is '+name+'  '+number+' '+email+'  '+phone
@@ -232,4 +214,4 @@ def noto():
     return render_template('noto.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False , host='0.0.0.0')
