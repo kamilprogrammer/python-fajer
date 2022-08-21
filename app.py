@@ -1,31 +1,22 @@
-from concurrent.futures.process import _python_exit
 from email.policy import default
 from enum import unique
-from tkinter import *
-from tkinter import ON
-from unicodedata import name
 from flask import Flask, render_template, redirect
 from flask import request
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import INTEGER, Integer
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, EmailField, SubmitField , StringField
 from wtforms.validators import DataRequired
 from flask_mail import Mail, Message
-import os
 import smtplib
-from flask_pymongo import PyMongo
 
 
 app = Flask(__name__)   
-database_name = 'python-fajer'
-DB_URI = 'mongodb+srv://admin:admin@python-fajer.0scwbev.mongodb.net/{}&retryWrites=true&w=majority'.format(database_name)
-app.config['MONGO_URI'] = DB_URI
-mongo = PyMongo(app)
-mongo.init_app(app)
 app.config['SECRET_KEY'] = "kamil's key"
+app.debug = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 
 
@@ -41,18 +32,6 @@ class Topsm(FlaskForm):
     name93 = StringField("الدرجة الثالثة", validators=[DataRequired()])
     Submit = SubmitField("ارسال")
 
-#class Register(mongo.__doc__):
-#    id = mongo.IntField(mongo.Integer, primary_key = True)
-#    name =  mongo.Column(mongo.Text(), nullable = False)
-#    email =  mongo.Column(mongo.Text(), nullable = False, unique=True)
-#    number =  mongo.Column(mongo.Integer)
-#    phone = mongo.Column(mongo.Integer)
-#    date_time =  mongo.Column(mongo.Date, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f'<Register: {self.email}>'
-
-
 class Register_std(FlaskForm):
     name = StringField("الاسم الثلاثي", validators=[DataRequired()])
     email = StringField("الايميل", validators=[DataRequired()])
@@ -60,29 +39,36 @@ class Register_std(FlaskForm):
     number = StringField("الصف", validators=[DataRequired()])
     sub = SubmitField("ارسال")
 
-    #create a Text !
-    def __repr__ (self):
-        return '<Name %r>' % self.name
 
+class Stds(db.Model):
+    id = db.Column(db.Integer , primary_key=True)
+    name = db.Column(db.String())
+    Age = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String() , unique=True)
+    phone = db.Column(db.Integer, nullable=False)
 
-#the main page
+    def __repr__(self):
+        return f'<User : {self.name}>'
+# The main page
 @app.route('/')
+
 def home ():
     return render_template('main.html')
 
 
-# the unused blog
-@app.route('/blog')
 
+# The unused blog
+@app.route('/blog')
 def blog ():
     return render_template('blog.html')
 
-# register
+
+# Register
 @app.route('/register/', methods = ['POST', 'GET'])
 def register ():
         return render_template('choose.html')
         
-
+# register for std
 @app.route('/register/s/' , methods=['POST', 'GET'])
 def registers ():
     if request.method == "POST":
@@ -91,8 +77,10 @@ def registers ():
         email = request.form.get("email")
         phone = request.form.get("phonenumber")
 
-        students = mongo.db.stds
-        students.insert_one({'name': name , 'compelete': False})
+
+        std = Stds(name=name  ,  Age=number ,  phone=phone  ,   email=email)
+        db.session.add(std)
+        db.session.commit()
 
         server2 = smtplib.SMTP("smtp.gmail.com", 587)
         mmsg = 'new email signed in from the website the name is '+name+'  '+number+' '+email+'  '+phone
@@ -107,6 +95,8 @@ def registers ():
         server1.login("kg0390217@gmail.com", "shisfemgekjynvwk")
         server1.sendmail ("kg0390217@gmail.com", email, msg1)
 
+
+        #You can delete them theis lines don't matter with the code
         if name  == '':
             return render_template('register.html')
         elif number  == '' :
@@ -140,11 +130,13 @@ def registers ():
 
     form = Register_std()
     return render_template('register.html',email=email, name=name, phone=phone, number=number,  form=form)
+
+# The school leaderboard on the exams
 @app.route('/Tops')
 def Tops():
     return render_template('Tops.html')
 
-
+# The managers page
 @app.route('/sc' , methods =["GET", "POST"])
 def sc ():
     if request.method == "POST":
@@ -160,37 +152,43 @@ def sc ():
 
     return render_template("privatesc.html")
 
+# it's only true!
 @app.route('/true')
 def true ():
     return render_template('true.html')
+
+#it's only sure!    
 @app.route('/sure')
 def sure ():
     return render_template('tables.html')
-
+# Don't matter only for debugging 
 @app.route('/private/sc', methods=['POST', 'GET'])
-
 def privatesc ():
    return render_template('privatesc.html')
 
-@app.route('/products')
 
+# 75% I Will delete this route
+@app.route('/products')
 def products ():
     return render_template('products.html')
 
 
+# The main page
 @app.route('/main')
-
 def main ():
     return render_template('index.html')
 
-
+# The erorr 404
 @app.errorhandler(404)
 def erorr404 (e):
     return render_template('404.html'), 404
 
+
+# The erorr 500
 @app.errorhandler(500)
 def erorr500 (e):
     return render_template('404.html'), 404
+
 
 @app.route('/bus')
 def bus():
@@ -214,4 +212,4 @@ def noto():
     return render_template('noto.html')
 
 if __name__ == '__main__':
-    app.run(debug=False , host='0.0.0.0')
+    app.run(debug=True , host='0.0.0.0')
