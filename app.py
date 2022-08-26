@@ -1,4 +1,3 @@
-from email.policy import default
 from enum import unique
 from flask import Flask, render_template, redirect
 from flask import request
@@ -9,16 +8,22 @@ from wtforms import IntegerField, EmailField, SubmitField , StringField
 from wtforms.validators import DataRequired
 from flask_mail import Mail, Message
 import smtplib
+from flask_mysqldb import MySQL 
 
 
 app = Flask(__name__)   
 app.config['SECRET_KEY'] = "kamil's key"
 app.debug = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+app.config['MYSQL_USER'] = 'uh7mzypr7rklsvtp'
+app.config['MYSQL_PASSWORD'] = "1XHjFIqX1nhdNHEFEiC3"
+app.config['MYSQL_HOST'] = 'bwanmigpdmkdtpx8yccv-mysql.services.clever-cloud.com'
+app.config['MYSQL_DB'] = 'bwanmigpdmkdtpx8yccv'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_PORT'] = 3306
 
 
+mysql = MySQL(app)
+mysql.init_app(app)
 
 class Topsm(FlaskForm):
     name71 = StringField("الدرجة الاولى", validators=[DataRequired()])
@@ -40,12 +45,12 @@ class Register_std(FlaskForm):
     sub = SubmitField("ارسال")
 
 
-class Stds(db.Model):
-    id = db.Column(db.Integer , primary_key=True)
-    name = db.Column(db.String())
-    Age = db.Column(db.Integer, nullable=False)
-    email = db.Column(db.String() , unique=True)
-    phone = db.Column(db.Integer, nullable=False)
+#class Stds(db.Model):
+#    id = db.Column(db.Integer , primary_key=True)
+#    name = db.Column(db.String())
+#    Age = db.Column(db.Integer, nullable=False)
+#    email = db.Column(db.String() , unique=True)
+#    phone = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f'<User : {self.name}>'
@@ -71,16 +76,13 @@ def register ():
 # register for std
 @app.route('/register/s/' , methods=['POST', 'GET'])
 def registers ():
+    cur = mysql.connection.cursor()
     if request.method == "POST":
         name = request.form.get("name")
         number = request.form.get("number")
         email = request.form.get("email")
         phone = request.form.get("phonenumber")
-
-
-        std = Stds(name=name  ,  Age=number ,  phone=phone  ,   email=email)
-        db.session.add(std)
-        db.session.commit()
+        
 
         server2 = smtplib.SMTP("smtp.gmail.com", 587)
         mmsg = 'new email signed in from the website the name is '+name+'  '+number+' '+email+'  '+phone
@@ -96,40 +98,58 @@ def registers ():
         server1.sendmail ("kg0390217@gmail.com", email, msg1)
 
 
-        #You can delete them theis lines don't matter with the code
-        if name  == '':
-            return render_template('register.html')
-        elif number  == '' :
-            return render_template('register.html')
-        elif email  == '':
-            return render_template('register.html')
-        elif phone  == '':
-            return render_template('register.html')         
-        else:
-            return render_template('tables.html', number=number, phone=phone, name=name, email=email)
+        if number == 1:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds1 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()
+        elif number == 2:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds2 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()
+        elif number == 3:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds3 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit() 
+        elif number == 4 :
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds4 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()
+        elif number == 5:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds5 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()
+        elif number == 6:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds6 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()
+        elif number == 7:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds7 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()
+        elif number == 8:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds8 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()
+        elif number == 9:
+            cur = mysql.connection.cursor()
+            cur.execute('''  INSERT INTO stds9 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+            mysql.connection.commit()  
 
-    name = None
-    number = None
-    email =  None
-    phone =  None
-    form = Register_std()
-    if form.validate_on_submit():
-        name = form.name.data
-        form.name.data = ''
+        cur = mysql.connection.cursor()
+        cur.execute('''  INSERT INTO stds (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+        mysql.connection.commit()                                                                                                                                     
 
-        name = form.number.data
-        form.number.data = ''
+        return redirect('/true')
 
-        name = form.phone.data
-        form.phone.data = ''
 
-        name = form.email.data
-        form.email.data = ''
 
+    name = request.form.get("name")
+    number = request.form.get("number")
+    email = request.form.get("email")
+    phone = request.form.get("phonenumber")
         
 
-    form = Register_std()
-    return render_template('register.html',email=email, name=name, phone=phone, number=number,  form=form)
+    return render_template('register.html',email=email, name=name, phone=phone, number=number)
 
 # The school leaderboard on the exams
 @app.route('/Tops')
@@ -212,4 +232,4 @@ def noto():
     return render_template('noto.html')
 
 if __name__ == '__main__':
-    app.run(debug=True , host='0.0.0.0')
+    app.run(debug=True)
