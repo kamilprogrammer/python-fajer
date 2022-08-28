@@ -76,7 +76,6 @@ def register ():
 # register for std
 @app.route('/register/s/' , methods=['POST', 'GET'])
 def registers ():
-    cur = mysql.connection.cursor()
     if request.method == "POST":
         name = request.form.get("name")
         number = request.form.get("number")
@@ -98,45 +97,45 @@ def registers ():
         server1.sendmail ("kg0390217@gmail.com", email, msg1)
 
 
-        if number == 1:
+        if number == '1':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds1 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()
-        elif number == 2:
+        elif number == '2':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds2 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()
-        elif number == 3:
+        elif number == '3':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds3 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit() 
-        elif number == 4 :
+        elif number == '4' :
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds4 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()
-        elif number == 5:
+        elif number == '5':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds5 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()
-        elif number == 6:
+        elif number == '6':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds6 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()
-        elif number == 7:
+        elif number == '7':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds7 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()
-        elif number == 8:
+        elif number == '8':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds8 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()
-        elif number == 9:
+        elif number == '9':
             cur = mysql.connection.cursor()
             cur.execute('''  INSERT INTO stds9 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
             mysql.connection.commit()  
 
         cur = mysql.connection.cursor()
-        cur.execute('''  INSERT INTO stds (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+        cur.execute('''  INSERT INTO stds2 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
         mysql.connection.commit()                                                                                                                                     
 
         return redirect('/true')
@@ -232,4 +231,4 @@ def noto():
     return render_template('noto.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , host='0.0.0.0')
