@@ -26,6 +26,27 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	<style>
+		.reg:hover {
+		  transform: rotate(-90deg);
+		}
+		.reg {
+		  font-size: 44;
+		  transition: transform .1s ease-in-out;
+		}
+		.dots:hover {
+		  transform: rotate(90deg);
+		}
+		.dots {
+		  transition: transform .2s ease-in-out;
+		}
+		.main-alf:hover {
+		  transform: scale(1.5);
+		}
+		.main-alf {
+		  transition: transform .1s ease-in-out;
+		}
+	   </style>
 	{% include 'inc/_navbar.html'  %} 
 	<div  data-aos='zoom-out' class="position-relative m-4" style="margin: 10px;">
         <div class="progress" style="height: 1px;">

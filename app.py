@@ -1,3 +1,5 @@
+from base64 import decode
+from encodings import utf_8
 from enum import unique
 from flask import Flask, render_template, redirect
 from flask import request
@@ -9,11 +11,11 @@ from wtforms.validators import DataRequired
 from flask_mail import Mail, Message
 import smtplib
 from flask_mysqldb import MySQL 
+import bcrypt
 
 
 app = Flask(__name__)   
 app.config['SECRET_KEY'] = "kamil's key"
-app.debug = True
 app.config['MYSQL_USER'] = 'uh7mzypr7rklsvtp'
 app.config['MYSQL_PASSWORD'] = "1XHjFIqX1nhdNHEFEiC3"
 app.config['MYSQL_HOST'] = 'bwanmigpdmkdtpx8yccv-mysql.services.clever-cloud.com'
@@ -159,15 +161,17 @@ def Tops():
 @app.route('/sc' , methods =["GET", "POST"])
 def sc ():
     if request.method == "POST":
-       passm = request.form.get("pass")
-       if passm == 'manager':
-        form = Topsm()
-        name71 = None
-        if form.validate_on_submit():
+        passm = request.form.get("pass")
+        passm = passm.encode('utf-32')
+        passm0 = 'manager'.encode('utf-32')
+        if passm == passm0:
+         form = Topsm()
+         name71 = None
+         if form.validate_on_submit():
             name71 = form.name71.data
             form.name71.data = ''
 
-        return render_template('choose2.html', form=form, name71=name71)
+         return render_template('choose2.html', form=form, name71=name71)
 
     return render_template("privatesc.html")
 
@@ -231,4 +235,4 @@ def noto():
     return render_template('noto.html')
 
 if __name__ == '__main__':
-    app.run(debug=True , host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
