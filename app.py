@@ -11,17 +11,16 @@ from wtforms.validators import DataRequired
 from flask_mail import Mail, Message
 import smtplib
 from flask_mysqldb import MySQL 
-import bcrypt
 
 
 app = Flask(__name__)   
+app.debug = True
 app.config['SECRET_KEY'] = "kamil's key"
-app.config['MYSQL_USER'] = 'uh7mzypr7rklsvtp'
-app.config['MYSQL_PASSWORD'] = "1XHjFIqX1nhdNHEFEiC3"
-app.config['MYSQL_HOST'] = 'bwanmigpdmkdtpx8yccv-mysql.services.clever-cloud.com'
-app.config['MYSQL_DB'] = 'bwanmigpdmkdtpx8yccv'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-app.config['MYSQL_PORT'] = 3306
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'python-fajerstd'
+app.config['MYSQL_POOL_SIZE'] = 30
 
 
 mysql = MySQL(app)
@@ -98,48 +97,10 @@ def registers ():
         server1.login("kg0390217@gmail.com", "shisfemgekjynvwk")
         server1.sendmail ("kg0390217@gmail.com", email, msg1)
 
-
-        if number == '1':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds1 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()
-        elif number == '2':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds2 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()
-        elif number == '3':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds3 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit() 
-        elif number == '4' :
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds4 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()
-        elif number == '5':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds5 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()
-        elif number == '6':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds6 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()
-        elif number == '7':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds7 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()
-        elif number == '8':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds8 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()
-        elif number == '9':
-            cur = mysql.connection.cursor()
-            cur.execute('''  INSERT INTO stds9 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-            mysql.connection.commit()  
-
         cur = mysql.connection.cursor()
-        cur.execute('''  INSERT INTO stds2 (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
-        mysql.connection.commit()                                                                                                                                     
-
+        cur.execute('''  INSERT INTO stds (name , email , number , phone) VALUES (%s , %s , %s , %s)  ''' , (name, email , number , phone))
+        mysql.connection.commit()     
+        cur.close()                                                                                                                                
         return redirect('/true')
 
 
@@ -155,6 +116,11 @@ def registers ():
 # The school leaderboard on the exams
 @app.route('/Tops')
 def Tops():
+    cur = mysql.connection.cursor()
+    cur.close()
+
+
+
     return render_template('Tops.html')
 
 # The managers page
