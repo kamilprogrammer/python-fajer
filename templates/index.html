@@ -1,6 +1,9 @@
 {% block body  %}
 <title>الصفحة الرئيسية</title>
 <meta name="viewport" content="width=device-width, initial-scale=1 ,user-scalable=no"/>
+<head>
+  <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+</head>
 {%  include 'inc/index_navbar.html'  %}
 
 <style>/* GLOBAL STYLES
@@ -203,7 +206,16 @@
 }
 
 </style>
-
+<style>
+  .prim-btn:hover {
+    transform: scale(1.2);
+    background-color: #35b2d849 ;
+  }
+  .prim-btn {
+    transition-duration: .10s;
+    transition: .10s ease-in-out;
+  }
+</style>
 <!-- Background image -->
 <div class="p-5 text-center bg-image" style="background-image: url('/static/main.png'); height: 500px; opacity: 0.8; background-color: #5a5a5a00;">
 <div class="mask" style="isolation: isolate; background-color: rgba(23, 205, 255, 0.365); height: 500px;">
@@ -212,7 +224,7 @@
     <img class="img" src="{{url_for('static', filename='img-01.png')}}" alt="LOGO" style="width: 160px; border-radius: 10px;">
     <h1 class="mb-3">مؤسسة الفجر التعليمية الخاصة</h1>
     <h5 class="mb-3">جيل الفجر الباسم جيل المستقبل الوضاء يشرق في وجهه التحدي وفي عينيه أشواق العطاء  👦💪👧</h5>
-    <a class="btn btn-outline-light btn-lg" href="#places" role="button"
+    <a class="btn btn-outline-light btn-lg prim-btn" href="#places" role="button"
     >  🌟أكثر  </a
     >
   </div>
@@ -223,6 +235,24 @@
 </header>
 <section class="places" id="places"></section>
   {% include 'inc/places.html'  %}
+  <style>
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+} 
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
+
+  {% include 'inc/footer2.html'  %}
+
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
@@ -237,4 +267,9 @@
   <script src="{{url_for('static', filename='js.js')}}" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+    $(".preloader").fadeOut();
+    })
+    </script>
 {% endblock  %}

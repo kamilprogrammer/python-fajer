@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صفحة الاوائل</title>
 </head>
-<body dir="rtl">
+<body>
     {% include 'inc/_navbar.html'  %}
     <br>
     <div style="text-align: center;">
@@ -67,21 +67,23 @@
             </tr>
         </thead>
         <tbody class="content-table">
+        {% for std in data %}
         <tr class="active-row">
           <td style="width: 20px;">1</td>
-          <td style="width: 5px;">kamil jakson</td>
+          <td style="width: 5px;">{{ std.0 }}</td>
           <td style="width: 50px; margin: 10px;">السابع</td>
         </tr>
         <tr class="active-row">
             <td style="width: 20px;">2</td>
-            <td style="width: 5px;">as</td>
+            <td style="width: 5px;">{{ std.1 }}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
           <tr class="active-row">
             <td style="width: 20px;">3</td>
-            <td style="width: 5px;">mllmlm</td>
+            <td style="width: 5px;">{{std.2}}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
+          
         </tbody>
       </table>
     </div>
@@ -146,17 +148,17 @@
         <tbody class="content-table">
         <tr class="active-row">
           <td style="width: 20px;">1</td>
-          <td style="width: 5px;">asas}</td>
+          <td style="width: 5px;">{{std.0}}</td>
           <td style="width: 50px; margin: 10px;">السابع</td>
         </tr>
         <tr class="active-row">
             <td style="width: 20px;">2</td>
-            <td style="width: 5px;">عمرو العبدالله</td>
+            <td style="width: 5px;">{{ std.1 }}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
           <tr class="active-row">
             <td style="width: 20px;">3</td>
-            <td style="width: 5px;">كامل الرفاعي</td>
+            <td style="width: 5px;">{{std.2}}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
         </tbody>
@@ -236,9 +238,11 @@
             <td style="width: 5px;">كامل الرفاعي</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
     <br>
+    
 </body>
 </html>
