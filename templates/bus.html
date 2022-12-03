@@ -1,13 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام النقل</title>
+  <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megazine!</title>
+  <style>.h1 {
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    font-size: 85px;
+    letter-spacing: 16px;
+    line-height: 0px;
+    margin-top: 60px;
+    margin-left: 10px;
+    margin-bottom: 70px;
+  }
+  .h2 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 85px;
+    line-height: 100px;
+    color: #C39F37;
+  }
+  .h3 {
+    font-size: 200px;
+    background: -webkit-linear-gradient(#FFFFFF , #837878, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+  @media only screen and (max-width: 643px) {
+    .h1 , .h2  {
+      font-size: 60px;
+      margin-bottom: 40px;
+    }
+  }
+  @media only screen and (max-width: 505px) {
+    .h1 , .h2  {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+  }
+  @media only screen and (max-width: 395px) {
+    .h1 , .h2  {
+      font-size: 30px;
+      margin-bottom: 1px;
+    }
+  }
+  @media only screen and (max-width: 340px) {
+    .h1 , .h2  {
+      font-size: 20px;
+      margin-bottom: 0px;
+    }
+  }
+  @media only screen and (max-width: 340px) {
+    .h1  {
+      font-size: 20px;
+      margin-bottom: 0px;
+    }
+  }
+  @media only screen and (max-width: 350px) {
+    .h1  {
+      font-size: 10px;
+      margin-bottom: 0px;
+    }
+  }
+  
+  
+  .a{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(64, 99, 205);
+    cursor: cell;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+    border-radius: 100px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    line-height: 0px;
+    box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.446);
+    font-size: 15px;
+    line-height: 0px;
+  }
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change your font family */
+  }
+  
+  .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  .content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: right;
+  font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+  padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+  }
+  
+  .content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+  }  
+  .flexbox-container {
+  align-items: stretch;
+  display: flex;
+  }
+  .flexbox-item1 {
+  font-size: x-large;
+  }
+  @media only screen and (max-width: 610px) {
+  .flexbox-item1  {
+    font-size: large;
+  }
+  }
+  @media only screen and (max-width: 510px) {
+  .flexbox-item1  {
+    font-size: medium;
+  }
+  }
+  @media only screen and (max-width: 455px) {
+  .flexbox-item1  {
+    font-size: small;
+  }
+  }
+  @media only screen and (max-width: 420px) {
+  .flexbox-container  {
+    display:block;
+  }
+  .flexbox-item1 {
+    font-size: x-large;
+  }
+  }
+  .h1 {
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    font-size: 85px;
+    letter-spacing: 16px;
+    line-height: 0px;
+    margin-top: 60px;
+    margin-left: 10px;
+    margin-bottom: 70px;
+  }
+  .h2 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 85px;
+    line-height: 100px;
+    color: #C39F37;
+  }
+  .h3 {
+    font-size: 200px;
+    background: -webkit-linear-gradient(#FFFFFF , #837878, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+  @media only screen and (max-width: 648px) {
+    .h1  {
+      font-size: 60px;
+      margin-bottom: 40px;
+      letter-spacing: 12px;
+    }
+    @media only screen and (max-width: 648px) {
+    .h2  {
+      font-size: 60px;
+      margin-bottom: 40px;
+    }
+  }
+  @media only screen and (max-width: 520px) {
+    .h1 , .h2  {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    .h1 {
+      letter-spacing: 8px;
+    }
+  }
+  @media only screen and (max-width: 403px) {
+    .h1 , .h2  {
+      font-size: 30px;
+      margin-bottom: 1px;
+    }
+    .h1 {
+      letter-spacing: 6px;
+    }
+  }
+  @media only screen and (max-width: 349px) {
+    .h1 , .h2  {
+      font-size: 20px;
+      margin-bottom: 0px;
+    }
+    .h1 {
+      letter-spacing: 4px;
+    }
+  }
+  @media only screen and (max-width: 306px) {
+    .h1  {
+      font-size: 10px;
+      margin-bottom: 0px;
+    }
+    .h2 {
+      font-size: 15px;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    .h1  {
+      font-size: xx-small;
+    }
+  }
+  
+  
+  .a{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(64, 99, 205);
+    cursor: cell;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+    border-radius: 100px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    line-height: 0px;
+    box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.446);
+    font-size: 15px;
+    line-height: 0px;
+  }
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change your font family */
+  }
+  
+  .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  .content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: right;
+  font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+  padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+  }
+  
+  .content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+  }  
+  .flexbox-container {
+  align-items: stretch;
+  display: flex;
+  }
+  .flexbox-item1 {
+  font-size: x-large;
+  }
+  @media only screen and (max-width: 610px) {
+  .flexbox-item1  {
+    font-size: large;
+  }
+  }
+  @media only screen and (max-width: 510px) {
+  .flexbox-item1  {
+    font-size: medium;
+  }
+  }
+  @media only screen and (max-width: 455px) {
+  .flexbox-item1  {
+    font-size: small;
+  }
+  }
+  @media only screen and (max-width: 475px) {
+  .flexbox-container  {
+    display: block;
+  }
+  .flexbox-item1 {
+    font-size: x-large;
+  }
+  }
+  }
+  .blur {
+    box-shadow: #ffd90086 1px 1px 50px;
+  }
+  @media only screen and (max-width: 310px) {
+    .flexbox-item1 {
+      font-size: large;
+    }
+    }
+    .ourteam {
+      font-size: x-large;
+    }
+  @media only screen and (max-width: 300px) {
+      .flexbox-item1 {
+        font-size: medium;
+      }
+      .ourteam {
+        font-size: medium;
+      }
+      .h4 , .h5 {
+        font-size: 95%;
+      }
+  
+    }
+  
+  
+    .h6 {
+      text-shadow: #ffd90086  0px 10px 10px;
+    }
+    .border {
+      border: #000000 solid 2px;
+    }
+    .h2 {
+      text-shadow: #ffd90090 2px 20px 25px;
+    }
+    .h1 {
+      text-shadow: rgba(0, 0, 0, 0.726) 2px 15px 25px;
+    }</style>
 </head>
+
 <body>
-    {% include 'inc/_navbar.html'  %}
-    
+    <div style="text-align: center;">
+    <h1 data-aos="zoom-in" class="h1">OLD PLACES</h1>
+    <h1  data-aos="zoom-in" class='h2'>M E G A Z I N E</h1>
+    <h1 data-aos="slide-down" class="h3">&#x2193;</h1>
+    <a data-aos="zoom-out" class="a" href="/Magazine.pdf">Open it!</a>
+    <div style="height: 75px;"></div>
+    <h1 style="line-height: 0px;" class="h4">Our Team:</h1>
+    <br>
+    <table class="ourteam" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Name</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Grade</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Work</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+            <td style="width: 20px;">Sahel Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Leader</td>
+          </tr>
+        <tr class="active-row">
+          <td style="width: 20px;">Kamel Rifai</td>
+          <td style="width: 5px;">8</td>
+          <td style="width: 50px; margin: 10px;">Data entrier</td>
+        </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">Moued Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Typer</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <br>
+      <h1 class="h5">Other teams:</h1>  
+      <br>
+      <div class="flexbox-container" style="justify-content: center;">
+      <table class="flexbox-item1" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Name</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Grade</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Work</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+            <td style="width: 20px;">Sahel Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Leader</td>
+          </tr>
+        <tr class="active-row">
+          <td style="width: 20px;">Kamel Rifai</td>
+          <td style="width: 5px;">8</td>
+          <td style="width: 50px; margin: 10px;">Data entrier</td>
+        </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">Moued Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Typer</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <br>
+      <table class="flexbox-item1" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Name</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Grade</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Work</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+            <td style="width: 20px;">Sahel Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Leader</td>
+          </tr>
+        <tr class="active-row">
+          <td style="width: 20px;">Kamel Rifai</td>
+          <td style="width: 5px;">8</td>
+          <td style="width: 50px; margin: 10px;">Data entrier</td>
+        </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">Moued Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Typer</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <div style="height: 30px;"></div>
+    <div class="flexbox-container" style="justify-content: center;">
+      <table class="flexbox-item1" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Name</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Grade</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Work</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+            <td style="width: 20px;">Sahel Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Leader</td>
+          </tr>
+        <tr class="active-row">
+          <td style="width: 20px;">Kamel Rifai</td>
+          <td style="width: 5px;">8</td>
+          <td style="width: 50px; margin: 10px;">Data entrier</td>
+        </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">Moued Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Typer</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <br>
+      <table class="flexbox-item1 blur" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Name</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Grade</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Work</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+            <td style="width: 20px;">Sahel Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Leader</td>
+          </tr>
+        <tr class="active-row">
+          <td style="width: 20px;">Kamel Rifai</td>
+          <td style="width: 5px;">8</td>
+          <td style="width: 50px; margin: 10px;">Data entrier</td>
+        </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">Moued Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Typer</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <div style="height: 30px;"></div>
+    <div class="flexbox-container" style="justify-content: center;">
+      <table class="flexbox-item1" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Name</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Grade</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Work</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+            <td style="width: 20px;">Sahel Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Leader</td>
+          </tr>
+        <tr class="active-row">
+          <td style="width: 20px;">Kamel Rifai</td>
+          <td style="width: 5px;">8</td>
+          <td style="width: 50px; margin: 10px;">Data entrier</td>
+        </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">Moued Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Typer</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <br>
+      <table class="flexbox-item1" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr class="content-table">
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Name</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Grade</th>
+              <th style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Work</th>
+            </tr>
+        </thead>
+        <tbody class="content-table">
+        <tr class="active-row">
+            <td style="width: 20px;">Sahel Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Leader</td>
+          </tr>
+        <tr class="active-row">
+          <td style="width: 20px;">Kamel Rifai</td>
+          <td style="width: 5px;">8</td>
+          <td style="width: 50px; margin: 10px;">Data entrier</td>
+        </tr>
+          <tr class="active-row">
+            <td style="width: 20px;">Moued Hawara</td>
+            <td style="width: 5px;">8</td>
+            <td style="width: 50px; margin: 10px;">Typer</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <h1>______________</h1>
+</div>
+<div style="text-align: center;">
+  
+</div>  
+<br>
+<br>
+<div style="text-align: center;">
+  <h1 class="h6">The leader Board</h1>
+  <div class="border">
+  <h2>The competition is not over yet.</h2></div>
+</div>
+
 </body>
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 </html>
