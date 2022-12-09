@@ -1,16 +1,5 @@
-from base64 import decode
-from encodings import utf_8
-from enum import unique
-from turtle import color
 from flask import Flask, render_template, redirect
 from flask import request
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-from flask_wtf import FlaskForm
-from wtforms import IntegerField, EmailField, SubmitField , StringField
-from wtforms.validators import DataRequired
-from flask_mail import Mail, Message
-import smtplib
 from flask_mysqldb import MySQL 
 
 
@@ -24,27 +13,6 @@ app.config['MYSQL_DB'] = 'tops'
 
 mysql = MySQL(app)
 
-class Topsm(FlaskForm):
-    name71 = StringField("الدرجة الاولى", validators=[DataRequired()])
-    name72 = StringField("الدرجة الثانية", validators=[DataRequired()])
-    name73 = StringField("الدرجة الثالثة", validators=[DataRequired()])
-    name81 = StringField("الدرجة الاولى", validators=[DataRequired()])
-    name82 = StringField("الدرجة الثانية", validators=[DataRequired()])
-    name83 = StringField("الدرجة الثالثة", validators=[DataRequired()])
-    name91 = StringField("الدرجة الاولى", validators=[DataRequired()])
-    name92 = StringField("الدرجة الثانية", validators=[DataRequired()])
-    name93 = StringField("الدرجة الثالثة", validators=[DataRequired()])
-    Submit = SubmitField("ارسال")
-
-class Register_std(FlaskForm):
-    name = StringField("الاسم الثلاثي", validators=[DataRequired()])
-    email = StringField("الايميل", validators=[DataRequired()])
-    phone = StringField("رقم للتواصل", validators=[DataRequired()])
-    number = StringField("الصف", validators=[DataRequired()])
-    sub = SubmitField("ارسال")
-
-    def __repr__(self):
-        return f'<User : {self.name}>'
 # The main page
 @app.route('/')
 
