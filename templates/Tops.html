@@ -8,6 +8,8 @@
 </head>
 <body>
     {% include 'inc/_navbar.html'  %}
+    {% for std in data %}
+    
     <br>
     <div style="text-align: center;">
         <label style="font-size: 40px;" for="">الصف السابع</label>
@@ -67,7 +69,7 @@
             </tr>
         </thead>
         <tbody class="content-table">
-        {% for std in data %}
+        
         <tr class="active-row">
           <td style="width: 20px;">1</td>
           <td style="width: 5px;">{{ std.0 }}</td>
@@ -80,13 +82,14 @@
           </tr>
           <tr class="active-row">
             <td style="width: 20px;">3</td>
-            <td style="width: 5px;">{{std.2}}</td>
+            <td style="width: 5px;">{{ std.2 }}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
           
         </tbody>
       </table>
     </div>
+
     <br>
     <div style="text-align: center;">
         <label style="font-size: 40px;" for="">الصف الثامن</label>
@@ -148,17 +151,17 @@
         <tbody class="content-table">
         <tr class="active-row">
           <td style="width: 20px;">1</td>
-          <td style="width: 5px;">{{std.0}}</td>
+          <td style="width: 5px;">{{ std.3 }}</td>
           <td style="width: 50px; margin: 10px;">السابع</td>
         </tr>
         <tr class="active-row">
             <td style="width: 20px;">2</td>
-            <td style="width: 5px;">{{ std.1 }}</td>
+            <td style="width: 5px;">{{ std.4 }}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
           <tr class="active-row">
             <td style="width: 20px;">3</td>
-            <td style="width: 5px;">{{std.2}}</td>
+            <td style="width: 5px;">{{ std.5 }}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
         </tbody>
@@ -225,24 +228,24 @@
         <tbody class="content-table">
         <tr class="active-row">
           <td style="width: 20px;">1</td>
-          <td style="width: 5px;">سهل حواره</td>
+          <td style="width: 5px;">{{ std.6 }}</td>
           <td style="width: 50px; margin: 10px;">السابع</td>
         </tr>
         <tr class="active-row">
             <td style="width: 20px;">2</td>
-            <td style="width: 5px;">عمرو العبدالله</td>
+            <td style="width: 5px;">{{ std.7}}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
           <tr class="active-row">
             <td style="width: 20px;">3</td>
-            <td style="width: 5px;">كامل الرفاعي</td>
+            <td style="width: 5px;">{{std.8}}</td>
             <td style="width: 50px; margin: 10px;">السابع</td>
           </tr>
-          {% endfor %}
+          
         </tbody>
       </table>
     </div>
     <br>
-    
+    {% endfor %}
 </body>
 </html>

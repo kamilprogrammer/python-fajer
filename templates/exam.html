@@ -4,58 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الاختبارات</title>
-</head>
-<body style="text-align: center;" dir="rtl">
-    {% include 'inc/_navbar.html'  %}
-    <br>
-    <div style="text-align: cneter;">
-        <form action="/exam">
-        <h1>تحديد موعد الاختبار</h1>
-        <br>
-        <input type="date">
-    </div>
-    <br>
-    <div style="text-align: cneter;">
-        <h1>ارسال رسالة للطلاب</h1>
-        <br>
-        <br>
-        <label for="">:الرسالة</label>
-        <br>
-        <br>
-        <input type="text">
-        <br>
-        <br>
-        <label for="">المرسل اليه</label>
-        <br>
-        <br>
-        <label for="">الصف الاول</label>
-        <input type="checkbox" name="g1">
-        <label for="">الصف الثاني</label>
-        <input type="checkbox" name="g2">
-        <label for="">الصف الثالث</label>
-        <input type="checkbox" name="g3">
-        <br>
-        <br>
-        <label for="">الصف الرابع</label>
-        <input type="checkbox" name="g4">
-        <label for="">الصف الخامس</label>
-        <input type="checkbox" name="g5">
-        <label for="">الصف السادس</label>
-        <input type="checkbox" name="g6">
-        <br>
-        <br>
-        <label for="">الصف السابع</label>
-        <input type="checkbox" name="g7">
-        <label for="">الصف الثامن</label>
-        <input type="checkbox" name="g8">
-        <label for="">الصف التاسع</label>
-        <input type="checkbox" name="g9">
-    </div>
-    <br>
-    <input type="submit" value="ارسال">
-</form>
+    <title>ADD THE TOPS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <style>
+        .h1 {
+            font-size: 60px;
+        }
+        
+        input{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body> 
+    <center>
+        <form action="" method="POST">
+        <h1 class="h1">تعديل الدرجات</h1>
+        <h1>الصف السابع</h1>
+        <h3>الدرجة الاولى</h3>
+        <input type="text" id="71" class="71" name="71">
+        <h3>الدرجة الثانية</h3>
+        <input type="text" id="72" class="72" name="72">
+        <h3>الدرجة الثالثة</h3>
+        <input type="text" id="73" class="73" name="73">
+        <h1>الصف الثامن</h1>
+        <h3>الدرجة الاولى</h3>
+        <input type="text" id="81" class="81" name="81">
+        <h3>الدرجة الثانية</h3>
+        <input type="text" id="82" class="82" name="82">
+        <h3>الدرجة الثالثة</h3>
+        <input type="text" id="83" class="83" name="83">
+        <h1>الصف التاسع</h1>
+        <h3>الدرجة الاولى</h3>
+        <input type="text" id="91" class="91" name="91">
+        <h3>الدرجة الثانية</h3>
+        <input type="text" id="92" class="92" name="92">
+        <h3>الدرجة الثالثة</h3>
+        <input type="text" id="93" class="93" name="93">
+        <br>
+        <br>
+        <input type="Submit" value="ADD" class="btn btn-secondary" style="width: 100px;">
+        <br>
+        <br>
+    </form>
+
+</center>
     
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

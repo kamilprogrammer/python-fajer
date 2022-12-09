@@ -73,10 +73,10 @@ def registers ():
 @app.route('/Tops')
 def Tops():
     cur  = mysql.connection.cursor()
-    cur.execute("SELECT number1 , number2 , number3 FROM leaders")
+    cur.execute("SELECT name1 , name2 , name3 , name4 , name5 , name6 , name7 , name8 , name9 FROM leaders")
     data = cur.fetchall()
     cur.close()
-
+    print(data)
     return render_template('Tops.html' , data=data)
 
 # The managers page
@@ -87,7 +87,7 @@ def sc ():
         passm = passm.encode('utf-32')
         passm0 = 'manager'.encode('utf-32')
         if passm == passm0:
-            return render_template('choose2.html')
+            return render_template('choose2.html' , methods=['POST' , 'GET'])
     return render_template("privatesc.html")
 
 # it's only true!
@@ -135,15 +135,22 @@ def bus():
 @app.route('/game')
 def game():
     return render_template('gameswc.html')
-@app.route('/exam')
+@app.route('/exam' , methods=['POST' , 'GET'])
 def exam():
     if request.method == 'POST':
-        msg1 = 'kamil is here because my package is just here!'
-        server1 = smtplib.SMTP("smtp.gmail.com", 587)
-        server1.starttls()
-        server1.login("kg0390217@gmail.com", "shisfemgekjynvwk")
-        to = ['rjdata.sy@gmail.com' , 'al-fajer@gmail.com']
-        server1.sendmail ("kg0390217@gmail.com", to, msg1)
+        name71 = request.form['71']
+        name72 = request.form['72']
+        name73 = request.form['73']
+        name81 = request.form['81']
+        name82 = request.form['82']
+        name83 = request.form['83']
+        name91 = request.form['91']
+        name92 = request.form['92']
+        name93 = request.form['93']
+        cur  = mysql.connection.cursor()
+        cur.execute("UPDATE `leaders` SET `name1`='[value-21]' WHERE 1")
+        cur.close()
+        
     return render_template('exam.html')
 
 
