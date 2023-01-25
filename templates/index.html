@@ -4,6 +4,20 @@
 <head>
   <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
 </head>
+{% for mesg in get_flashed_messages() %}
+  <style> 
+  .alert {
+    margin-right: 60;
+    margin-left: 60;
+    margin-top: 2px;
+  }
+  </style>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{ mesg }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
 {%  include 'inc/index_navbar.html'  %}
 
 <style>/* GLOBAL STYLES

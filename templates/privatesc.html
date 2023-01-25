@@ -10,31 +10,14 @@
 </head>
 {% include 'inc/_navbar.html'  %}
 <body style="text-align: center;">
-    <div  data-aos='zoom-out' class="position-relative m-4" style="margin: 10px;">
-        <div class="progress" style="height: 1px;">
-          <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <a href="/main">
-        <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button></a>
-        <a href="/register">
-        <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">2</button></a>
-        <a href="/sc">
-        <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">3</button></a>
-      </div>
         <style>
-            @media only screen and (max-width: 511px) {
-                .input1 {
-                    width: 50px;
-                }
-                
-            }
-            @media only screen and (max-width:600px) {
-                .input1 {
+            @media (max-width:400px) {
+                input {
                     width: 250px;
                 }
             }
             .input1 {
-                width: 400px;
+                width: 300px;
                 height: 40px;
                 border: solid #50aeca 3px;
                 border-radius: 9999px;
@@ -47,12 +30,13 @@
                 margin: 50px;
             }
         </style>
+        
         <h2 data-aos="zoom-out" >! ادخل الباسوورد</h2>
         <form action="/sc" method="post">
             <input data-aos="zoom-out" type="password" name="pass" class="input1" id="myInput"><br>
             <div style="height: 15px;"></div>
             <div data-aos="zoom-out">
-                <input type="checkbox" onclick="myFunction()"><label style="margin-left: 10px;" for="">اظهار الباسوورد</label>
+                <input type="checkbox" onclick="myFunction()">  :اظهار الباسوورد<label style="margin-left: 10px;" for=""></label>
             </div>
             <div style="height: 15px;"></div>
             <br>

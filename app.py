@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect , flash
 from flask import request
 from flask_mysqldb import MySQL 
+import random
 
 
 app = Flask(__name__)   
@@ -8,8 +9,9 @@ app.debug = True
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'tops'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'stds'
+app.secret_key = 'root'
 
 mysql = MySQL(app)
 
@@ -41,7 +43,7 @@ def registers ():
 @app.route('/Tops')
 def Tops():
     cur  = mysql.connection.cursor()
-    cur.execute("SELECT name1 , name2 , name3 , name4 , name5 , name6 , name7 , name8 , name9 FROM leaders")
+    cur.execute("SELECT top71 , top72 , top73 , top81 , top82 , top83 , top91 , top92 , top93 FROM tops")
     data = cur.fetchall()
     cur.close()
     print(data)
@@ -100,10 +102,7 @@ def erorr500 (e):
 def bus():
     return render_template('bus.html')
 
-@app.route('/game')
-def game():
-    return render_template('gameswc.html')
-@app.route('/exam' , methods=['POST' , 'GET'])
+@app.route('/grades/' , methods=['POST' , 'GET'])
 def exam():
     if request.method == 'POST':
         name71 = request.form['71']
@@ -115,16 +114,50 @@ def exam():
         name91 = request.form['91']
         name92 = request.form['92']
         name93 = request.form['93']
+        print(name93)
         cur  = mysql.connection.cursor()
-        cur.execute("UPDATE `leaders` SET `name1`='[value-21]' WHERE 1")
+        cur.execute("""UPDATE `tops` SET `id`='0',`top71`=%s , `top71`=%s """  ,  [name71  , name71])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top72`=%s , `top72`=%s """  , [name72 , name72])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top73`=%s , `top73`=%s """  , [name73 , name73])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top81`=%s , `top81`=%s """  , [name81 , name81])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top82`=%s , `top82`=%s """  , [name82 , name82])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top83`=%s , `top83`=%s """  , [name83 , name83])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top91`=%s , `top91`=%s """  , [name91 , name91])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top92`=%s , `top92`=%s """  , [name92 , name92])
+        cur.execute("""UPDATE `tops` SET `id`='0',`top93`=%s , `top93`=%s """  , [name93 , name93])
+        mysql.connection.commit()
         cur.close()
+        flash("تم تغيير الأوائل")
+        return redirect('/main')
         
-    return render_template('exam.html')
+    return render_template('grades.html')
 
 
-@app.route('/noto')
+@app.route('/noto/')
 def noto():
     return render_template('noto.html')
+
+@app.route("/Complaint/" , methods=['POST' , 'GET'])    
+def Complaint():
+    if request.method == 'POST':
+        Complaint = request.form['Complaint']
+        cur  = mysql.connection.cursor()
+        cur.execute("""INSERT INTO `complaints`(`Complaint`) VALUES (%s)""" , [Complaint])
+        mysql.connection.commit()
+        cur.close()
+        flash('تم ارسال الشكوى')
+        return redirect('/main')
+
+
+    return render_template('Complaint.html')
+
+@app.route("/t_Complaint/" , )    
+def t_Complaint():
+        cur  = mysql.connection.cursor()
+        cur.execute("""  SELECT `Complaint` FROM `complaints` WHERE 1  """)
+        data1 = cur.fetchall()
+        cur.close()
+        return render_template('t_Complaint.html' , data=data1)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
