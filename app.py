@@ -7,10 +7,10 @@ import random
 app = Flask(__name__)   
 app.debug = True
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'stds'
+app.config['MYSQL_HOST'] = 'bwanmigpdmkdtpx8yccv-mysql.services.clever-cloud.com'
+app.config['MYSQL_USER'] = 'uh7mzypr7rklsvtp'
+app.config['MYSQL_PASSWORD'] = '1XHjFIqX1nhdNHEFEiC3'
+app.config['MYSQL_DB'] = 'bwanmigpdmkdtpx8yccv'
 app.secret_key = 'root'
 
 mysql = MySQL(app)
