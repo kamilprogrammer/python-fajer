@@ -17,16 +17,8 @@ mysql = MySQL(app)
 
 # The main page
 @app.route('/')
-
 def home ():
     return render_template('main.html')
-
-
-
-# The unused blog
-@app.route('/blog')
-def blog ():
-    return render_template('gameswc.html')
 
 
 # Register
