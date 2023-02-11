@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect , flash
 from flask import request
 from flask_mysqldb import MySQL 
-import random
 
 
 app = Flask(__name__)   
@@ -152,4 +151,4 @@ def t_Complaint():
         return render_template('t_Complaint.html' , data=data1)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host="0.0.0.0",debug=True)
